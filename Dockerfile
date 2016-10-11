@@ -18,7 +18,7 @@ RUN adduser -D minecraft && \
     unzip ${SERVER_FILE} && \
     chmod u+x FTBInstall.sh ServerStart.sh CheckEula.sh && \
     rm eula.txt && \
-    sed -i '2i /bin/bash /minecraft/CheckEula.sh' /minecraft/ServerStart.sh && \
+    sed -i '2i /bin/sh /minecraft/CheckEula.sh' /minecraft/ServerStart.sh && \
     chown -R minecraft:minecraft /minecraft
 
 USER minecraft
@@ -26,4 +26,4 @@ RUN /minecraft/FTBInstall.sh
 EXPOSE ${SERVER_PORT}
 VOLUME ["/minecraft/world"]
 
-CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
+CMD ["/bin/sh", "/minecraft/ServerStart.sh"]
