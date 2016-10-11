@@ -10,7 +10,8 @@ docker run --name ftb_cloud9_data audiohacked/ftb_cloud9:stable true
 
 Then, run the server container:
 ```
-docker run -d --name ftb_cloud9 \
+docker run --detach --interactive --tty \
+    --name ftb_cloud9 \
     --volumes-from ftb_cloud9_data \
     -p 25565:25565 \
     -e EULA=TRUE \
