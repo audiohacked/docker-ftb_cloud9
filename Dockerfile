@@ -11,9 +11,9 @@ WORKDIR /minecraft
 
 USER root
 COPY CheckEula.sh /minecraft/
-RUN useradd -m -U minecraft && \
+RUN adduser -D minecraft && \
     mkdir -p /minecraft/world && \
-	apk --no-cache add curl wget && \
+    apk --no-cache add curl wget && \
     curl -SLO ${BASE_URL}/${FTB_VERSION}/${SERVER_FILE}  && \
     unzip ${SERVER_FILE} && \
     chmod u+x FTBInstall.sh ServerStart.sh CheckEula.sh && \
